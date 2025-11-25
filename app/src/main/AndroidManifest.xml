@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AplikasiManajemenKeuanganKel3">
         <activity
+            android:name=".PriorityItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".PriorityItemActivty"
             android:exported="false" />
         <activity
