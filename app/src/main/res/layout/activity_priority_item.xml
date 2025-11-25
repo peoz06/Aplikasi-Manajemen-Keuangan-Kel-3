@@ -7,4 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".PriorityItemActivity">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="185dp"
+        android:layout_height="424dp"
+        app:srcCompat="@drawable/whatsapp_image_2025_11_22_at_19_01_19"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="114dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
