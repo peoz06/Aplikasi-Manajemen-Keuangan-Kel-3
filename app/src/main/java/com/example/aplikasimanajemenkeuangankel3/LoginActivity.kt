@@ -1,5 +1,6 @@
 package com.example.aplikasimanajemenkeuangankel3
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -19,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val usernameInput = findViewById<EditText>(R.id.editTextTextUsername)
         val passwordInput = findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.buttonLogin)
@@ -31,9 +33,10 @@ class LoginActivity : AppCompatActivity() {
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Username dan Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             } else {
-
+                val intent = Intent(this, PriorityItemActivity::class.java)
+                startActivity(intent)
+                finish()
             }
-
         }
     }
 }
