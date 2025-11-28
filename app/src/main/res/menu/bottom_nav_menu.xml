@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_priority"
+        android:icon="@drawable/icon_priority"
+        android:title="Priority" />
+
+    <item
+        android:id="@+id/navigation_balance"
+        android:icon="@drawable/icon_balance"
+        android:title="Balance"/>
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/icon_setting"
+        android:title="Setting"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/icon_profile"
+        android:title="Profile"/>
+
+</menu>
