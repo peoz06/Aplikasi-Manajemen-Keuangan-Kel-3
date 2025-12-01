@@ -28,7 +28,6 @@
         android:layout_height="36dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/kotakbirutransaksi"
-        android:backgroundTint="@color/design_default_color_primary"
         android:gravity="center"
         android:text="TRANSACTION HISTORY"
         android:textColor="@android:color/white"
@@ -69,14 +68,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PT. NusaPernada"
-                        android:textColor="@color/design_default_color_primary"
+                        android:textColor="#1A73E8"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Poco X7"
-                        android:textColor="@color/design_default_color_primary" />
+                        android:textColor="#1A73E8" />
                 </LinearLayout>
 
                 <TextView
@@ -85,7 +84,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:text="Rp. 7.000.000"
-                    android:textColor="@color/design_default_color_primary"
+                    android:textColor="#1A73E8"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -111,14 +110,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PT. Gojek Indonesia"
-                        android:textColor="@color/design_default_color_primary"
+                        android:textColor="#1A73E8"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Go-Food"
-                        android:textColor="@color/design_default_color_primary" />
+                        android:textColor="#1A73E8" />
                 </LinearLayout>
 
                 <TextView
@@ -127,7 +126,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:text="Rp. 50.000"
-                    android:textColor="@color/design_default_color_primary"
+                    android:textColor="#1A73E8"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -153,14 +152,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PT. INKA Indonesia"
-                        android:textColor="@color/design_default_color_primary"
+                        android:textColor="#1A73E8"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ticket kereta"
-                        android:textColor="@color/design_default_color_primary" />
+                        android:textColor="#1A73E8" />
                 </LinearLayout>
 
                 <TextView
@@ -169,7 +168,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:text="Rp. 120.000"
-                    android:textColor="@color/design_default_color_primary"
+                    android:textColor="#1A73E8"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -195,14 +194,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PT. SinarMas Indonesia"
-                        android:textColor="@color/design_default_color_primary"
+                        android:textColor="#1A73E8"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Buku Paket"
-                        android:textColor="@color/design_default_color_primary" />
+                        android:textColor="#1A73E8" />
                 </LinearLayout>
 
                 <TextView
@@ -211,7 +210,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:text="Rp. 145.000"
-                    android:textColor="@color/design_default_color_primary"
+                    android:textColor="#1A73E8"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -248,7 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INCOME"
-                    android:textColor="@color/design_default_color_primary"
+                    android:textColor="#1A73E8"
                     android:textStyle="bold" />
 
                 <TextView
@@ -257,7 +256,7 @@
                     android:text="Rp
 7.000.000"
                     android:textAlignment="center"
-                    android:textColor="@color/design_default_color_primary" />
+                    android:textColor="#1A73E8" />
             </LinearLayout>
 
             <LinearLayout
@@ -271,7 +270,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="EXPENSES"
-                    android:textColor="@color/design_default_color_primary"
+                    android:textColor="#1A73E8"
                     android:textStyle="bold" />
 
                 <TextView
@@ -280,7 +279,7 @@
                     android:text="Rp
 5.000.000"
                     android:textAlignment="center"
-                    android:textColor="@color/design_default_color_primary" />
+                    android:textColor="#1A73E8" />
             </LinearLayout>
 
             <LinearLayout
@@ -294,7 +293,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DIFFERENCE"
-                    android:textColor="@color/design_default_color_primary"
+                    android:textColor="#1A73E8"
                     android:textStyle="bold" />
 
                 <TextView
@@ -303,7 +302,7 @@
                     android:text="Rp
 2.000.000"
                     android:textAlignment="center"
-                    android:textColor="@color/design_default_color_primary" />
+                    android:textColor="#1A73E8" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
