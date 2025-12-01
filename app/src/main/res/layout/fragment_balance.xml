@@ -23,24 +23,25 @@
 
     <TextView
         android:id="@+id/btn_transaction_history"
-        android:textStyle="bold"
-        android:layout_width="178dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="298dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/kotakbirutransaksi"
         android:gravity="center"
         android:text="TRANSACTION HISTORY"
         android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_balance_title" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_transactions"
-        android:layout_width="0dp"
+        android:layout_width="375dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,13 +50,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="20dp">
 
             <!-- Transaction Item 1 -->
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="331dp"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
@@ -69,13 +70,15 @@
                         android:layout_height="wrap_content"
                         android:text="PT. NusaPernada"
                         android:textColor="#1A73E8"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Poco X7"
-                        android:textColor="#1A73E8" />
+                        android:textColor="#1A73E8"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <TextView
@@ -85,6 +88,7 @@
                     android:layout_centerVertical="true"
                     android:text="Rp. 7.000.000"
                     android:textColor="#1A73E8"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -97,8 +101,8 @@
 
             <!-- Transaction Item 2 -->
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="333dp"
+                android:layout_height="55dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -111,13 +115,15 @@
                         android:layout_height="wrap_content"
                         android:text="PT. Gojek Indonesia"
                         android:textColor="#1A73E8"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Go-Food"
-                        android:textColor="#1A73E8" />
+                        android:textColor="#1A73E8"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <TextView
@@ -127,6 +133,7 @@
                     android:layout_centerVertical="true"
                     android:text="Rp. 50.000"
                     android:textColor="#1A73E8"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -139,8 +146,8 @@
 
             <!-- Transaction Item 3 -->
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="333dp"
+                android:layout_height="53dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -153,13 +160,15 @@
                         android:layout_height="wrap_content"
                         android:text="PT. INKA Indonesia"
                         android:textColor="#1A73E8"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ticket kereta"
-                        android:textColor="#1A73E8" />
+                        android:textColor="#1A73E8"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <TextView
@@ -169,6 +178,7 @@
                     android:layout_centerVertical="true"
                     android:text="Rp. 120.000"
                     android:textColor="#1A73E8"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -181,8 +191,8 @@
 
             <!-- Transaction Item 4 -->
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="325dp"
+                android:layout_height="58dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -195,13 +205,15 @@
                         android:layout_height="wrap_content"
                         android:text="PT. SinarMas Indonesia"
                         android:textColor="#1A73E8"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Buku Paket"
-                        android:textColor="#1A73E8" />
+                        android:textColor="#1A73E8"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <TextView
@@ -211,6 +223,7 @@
                     android:layout_centerVertical="true"
                     android:text="Rp. 145.000"
                     android:textColor="#1A73E8"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -222,7 +235,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -231,7 +244,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FFFFFF"
             android:orientation="horizontal"
             android:padding="16dp"
             android:weightSum="3">
@@ -241,7 +255,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingRight="2dp">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -262,6 +278,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -309,13 +326,15 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
+        android:outlineAmbientShadowColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/white" />
+        app:tint="#1A73E8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
