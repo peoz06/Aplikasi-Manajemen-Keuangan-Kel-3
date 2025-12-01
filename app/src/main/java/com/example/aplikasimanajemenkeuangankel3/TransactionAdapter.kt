@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.text.NumberFormat
+import java.util.Locale
 
 class TransactionAdapter(private val transactions: MutableList<Transaction>) :
     RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
@@ -25,7 +27,9 @@ class TransactionAdapter(private val transactions: MutableList<Transaction>) :
         val transaction = transactions[position]
         holder.ptName.text = transaction.ptName
         holder.itemName.text = transaction.itemName
-        holder.price.text = "Rp. ${transaction.price}"
+
+        val formatter = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+        holder.price.text = formatter.format(transaction.price)
     }
 
     override fun getItemCount() = transactions.size

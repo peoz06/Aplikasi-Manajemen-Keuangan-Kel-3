@@ -9,16 +9,23 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.NumberFormat
+import java.util.Locale
 
 class BalanceFragment : Fragment() {
 
     private lateinit var transactionAdapter: TransactionAdapter
     private val transactions = mutableListOf<Transaction>()
+
+    private lateinit var tvIncome: TextView
+    private lateinit var tvExpenses: TextView
+    private lateinit var tvDifference: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +39,10 @@ class BalanceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tvIncome = view.findViewById(R.id.tv_income_value)
+        tvExpenses = view.findViewById(R.id.tv_expenses_value)
+        tvDifference = view.findViewById(R.id.tv_difference_value)
+
         // Setup RecyclerView
         val rvTransactions: RecyclerView = view.findViewById(R.id.rv_transactions)
         transactionAdapter = TransactionAdapter(transactions)
@@ -43,6 +54,7 @@ class BalanceFragment : Fragment() {
         fab.setOnClickListener {
             showAddTransactionDialog()
         }
+        updateSummary()
     }
 
     private fun showAddTransactionDialog() {
@@ -81,6 +93,7 @@ class BalanceFragment : Fragment() {
                         type = type
                     )
                     transactionAdapter.addTransaction(newTransaction)
+                    updateSummary()
 
                     Toast.makeText(context, "Saved $type: $name - $item", Toast.LENGTH_SHORT).show()
                     alertDialog.dismiss()
@@ -91,5 +104,17 @@ class BalanceFragment : Fragment() {
                 Toast.makeText(context, "Please fill all fields", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun updateSummary() {
+        val totalIncome = transactions.filter { it.type == "Income" }.sumOf { it.price }
+        val totalExpenses = transactions.filter { it.type == "Expense" }.sumOf { it.price }
+        val difference = totalIncome - totalExpenses
+
+        val formatter = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+
+        tvIncome.text = "Rp\n${formatter.format(totalIncome)}"
+        tvExpenses.text = "Rp\n${formatter.format(totalExpenses)}"
+        tvDifference.text = "Rp\n${formatter.format(difference)}"
     }
 }
