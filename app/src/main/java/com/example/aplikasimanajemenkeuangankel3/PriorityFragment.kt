@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +23,9 @@ class PriorityFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: PriorityAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,6 +40,21 @@ class PriorityFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_priority, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val dummyData = listOf(
+            PriorityItem(1, "Lenovo LOQ", 15000000.0, "Untuk gaming tipis-tipis", 80),
+            PriorityItem(2, "Kursi Ergonomis", 1000000.0, "Biar tidak pegel-pegel", 90),
+            PriorityItem(3, "Sepatu Super", 30000000.0, "Untuk lari cepat", 50)
+        )
+
+        recyclerView = view.findViewById(R.id.priority_recycler_view)
+        adapter = PriorityAdapter(dummyData)
+
+        recyclerView.adapter = adapter
 
     }
 
