@@ -42,6 +42,4 @@ class PriorityAdapter(private val itemList: List<PriorityItem>) :
         }
     }
 
-
-
 }
