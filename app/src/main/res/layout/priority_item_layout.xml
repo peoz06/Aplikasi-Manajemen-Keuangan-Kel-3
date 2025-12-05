@@ -12,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient_silver"
         android:padding="16dp">
 
         <ImageView
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textAppearance="?attr/textAppearanceBodyLarge"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="#1A73E8"
             app:layout_constraintStart_toStartOf="@id/item_name"
             app:layout_constraintTop_toBottomOf="@id/item_name"
             tools:text="Rp 1.500.000" />

@@ -9,7 +9,11 @@
         android:id="@+id/navigation_priority"
         android:name="com.example.aplikasimanajemenkeuangankel3.PriorityFragment"
         android:label="fragment_priority"
-        tools:layout="@layout/fragment_priority" />
+        tools:layout="@layout/fragment_priority" >
+        <action
+            android:id="@+id/action_navigation_priority_to_addEditPriorityFragment2"
+            app:destination="@id/addEditPriorityFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_balance"
         android:name="com.example.aplikasimanajemenkeuangankel3.BalanceFragment"
@@ -25,4 +29,9 @@
         android:name="com.example.aplikasimanajemenkeuangankel3.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/addEditPriorityFragment2"
+        android:name="com.example.aplikasimanajemenkeuangankel3.AddEditPriorityFragment"
+        android:label="fragment_add_edit_priority"
+        tools:layout="@layout/fragment_add_edit_priority" />
 </navigation>
