@@ -1,6 +1,8 @@
 package com.example.aplikasimanajemenkeuangankel3
 
 import android.content.Intent
+import android.net.Uri // Diperlukan untuk Intent.ACTION_DIAL
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,19 +11,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog // Pastikan Anda mengimpor AlertDialog
 
 class ProfileFragment : Fragment() {
 
     private var username: String? = null
 
+    // ... (Companion Object, onCreate, onCreateView) ...
     companion object {
         const val ARG_USERNAME = "arg_username"
-        private const val EXTRA_USERNAME_KEY = "extra_username" // Pastikan ini sesuai di LoginActivity
+        private const val EXTRA_USERNAME_KEY = "extra_username"
 
-        /**
-         * Metode factory yang disarankan untuk membuat instance Fragment
-         * dengan melewatkan data melalui Arguments Bundle.
-         */
         @JvmStatic
         fun newInstance(username: String) =
             ProfileFragment().apply {
@@ -33,7 +33,6 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Mengambil username dari arguments (jika menggunakan newInstance)
         arguments?.let {
             username = it.getString(ARG_USERNAME)
         }
@@ -43,28 +42,21 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Panggil fungsi penyiapan
         displayUsername(view)
         setupLogoutButton(view)
-        setupMenuButtons(view) // Menghubungkan tombol menu dengan ID unik
+        setupMenuButtons(view) // Logika klik pop-up ada di sini
     }
 
-    /**
-     * Mengambil username dari Arguments atau Activity Intent dan menampilkannya.
-     */
     private fun displayUsername(view: View) {
         val tvUserName = view.findViewById<TextView>(R.id.tv_user_name)
-
         var userToDisplay = username
 
-        // Fallback: Coba ambil dari Activity Intent
         if (userToDisplay.isNullOrEmpty()) {
             userToDisplay = activity?.intent?.getStringExtra(EXTRA_USERNAME_KEY)
         }
@@ -76,46 +68,85 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    /**
-     * Menyiapkan aksi untuk tombol LOG OUT.
-     */
     private fun setupLogoutButton(view: View) {
         val btnLogout = view.findViewById<Button>(R.id.btn_logout)
         btnLogout.setOnClickListener {
-            // TODO: Bersihkan sesi login (Shared Preferences/Database) di sini
             Toast.makeText(context, "Logging out...", Toast.LENGTH_SHORT).show()
 
-            // Navigasi ke LoginActivity dan hapus back stack
             val intent = Intent(activity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
 
+    // =========================================================================
+    // Fungsi baru untuk menampilkan pop-up
+    // =========================================================================
+
     /**
-     * Menyiapkan aksi untuk tombol-tombol menu.
+     * Fungsi umum untuk menampilkan AlertDialog.
+     * @param title Judul pop-up.
+     * @param message Isi pesan pop-up.
+     * @param isHelpAction True jika aksi ini harus menyertakan tombol Telepon.
+     */
+    private fun showInfoPopup(title: String, message: String, isHelpAction: Boolean = false) {
+        context?.let {
+            val builder = AlertDialog.Builder(it)
+            builder.setTitle(title)
+            builder.setMessage(message)
+
+            // Tombol default untuk menutup
+            builder.setPositiveButton("TUTUP", null)
+
+            // Tambahkan tombol TELEPON hanya jika ini adalah aksi Bantuan (Help)
+            if (isHelpAction) {
+                builder.setNegativeButton("TELEPON SEKARANG") { dialog, _ ->
+                    // Membuka Dialer
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse("tel:+6282233370042") //nomor kontak
+                    startActivity(intent)
+                }
+            }
+
+            builder.show()
+        }
+    }
+
+    /**
+     * Menyiapkan pop-up untuk semua tombol menu.
      */
     private fun setupMenuButtons(view: View) {
-        // Menghubungkan dengan ID unik yang sudah diperbaiki di XML
         val btnHelp = view.findViewById<TextView>(R.id.btn_help)
         val btnAbout = view.findViewById<TextView>(R.id.btn_about)
         val btnNotification = view.findViewById<TextView>(R.id.btn_notification)
         val btnVersion = view.findViewById<TextView>(R.id.btn_version)
 
+        // 1. HELP (Pop-up dengan Opsi Telepon)
         btnHelp.setOnClickListener {
-            Toast.makeText(context, "Membuka halaman Bantuan", Toast.LENGTH_SHORT).show()
+            val title = "Help & Contack"
+            val message = "Kami siap membantu Anda! Hubungi tim dukungan kami di:\n\nCustomer Service: \ncukurukuk@email.com \n+62-xxx-xxxx-xxxx"
+            showInfoPopup(title, message, isHelpAction = true)
         }
 
+        // 2. ABOUT (Pop-up Informasi Aplikasi)
         btnAbout.setOnClickListener {
-            Toast.makeText(context, "Membuka halaman Tentang Kami", Toast.LENGTH_SHORT).show()
+            val title = "About Aplication"
+            val message = "Aplikasi Manajemen Keuangan Kelompok 3. Dirancang untuk membantu Anda melacak pendapatan dan pengeluaran secara efisien. \n\nBuild by: Arif Syafarian, Alfeus Javaneo, Muhammad Ulil"
+            showInfoPopup(title, message)
         }
 
+        // 3. NOTIFICATION (Pop-up Pengaturan)
         btnNotification.setOnClickListener {
-            Toast.makeText(context, "Membuka Pengaturan Notifikasi", Toast.LENGTH_SHORT).show()
+            val title = "Notifikation Setting"
+            val message = "Anda dapat mengaktifkan atau menonaktifkan pengingat transaksi dan laporan mingguan di Pengaturan perangkat anda."
+            showInfoPopup(title, message)
         }
 
+        // 4. VERSION (Pop-up Versi)
         btnVersion.setOnClickListener {
-            Toast.makeText(context, "Versi Aplikasi: 1.0.0", Toast.LENGTH_SHORT).show()
+            val title = "Version"
+            val message = "Saat ini Anda menggunakan versi: 1.0.0 .\n\nPastikan anda menndapatkan versi terbaru di Play Store untuk Fitur dan update terbaru dari kami. "
+            showInfoPopup(title, message)
         }
     }
 }

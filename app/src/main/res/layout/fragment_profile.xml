@@ -97,7 +97,7 @@
                 android:padding="16dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
-                android:drawableStart="@drawable/ic_info"
+                android:drawableStart="@drawable/ic_notification"
                 android:drawablePadding="16dp"
                 android:text="Notification"/>
 
@@ -112,7 +112,7 @@
                 android:padding="16dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
-                android:drawableStart="@drawable/ic_info"
+                android:drawableStart="@drawable/ic_version"
                 android:drawablePadding="16dp"
                 android:text="Version"/>
         </LinearLayout>
