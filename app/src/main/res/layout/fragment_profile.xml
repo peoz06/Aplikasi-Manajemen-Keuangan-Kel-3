@@ -42,8 +42,51 @@
             android:textSize="18sp"
             android:textStyle="bold"
             tools:text="Username" />
-
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_references"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout"
+        app:layout_constraintStart_toStartOf="@id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btnHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_help"
+                android:drawablePadding="16dp"
+                android:text="Bantuan &amp; Dukungan"/>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"/>
+
+            <TextView
+                android:id="@+id/btnAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="16dp"
+                android:text="Tentang Aplikasi (About)"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <Button
