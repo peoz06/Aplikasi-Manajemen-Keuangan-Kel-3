@@ -61,7 +61,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/btnHelp"
+                android:id="@+id/btn_help"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
@@ -69,14 +69,14 @@
                 android:textColor="@android:color/black"
                 android:drawableStart="@drawable/ic_help"
                 android:drawablePadding="16dp"
-                android:text="Bantuan &amp; Dukungan"/>
+                android:text="Help"/>
 
             <View android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0"/>
 
             <TextView
-                android:id="@+id/btnAbout"
+                android:id="@+id/btn_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
@@ -84,10 +84,39 @@
                 android:textColor="@android:color/black"
                 android:drawableStart="@drawable/ic_info"
                 android:drawablePadding="16dp"
-                android:text="Tentang Aplikasi (About)"/>
+                android:text="About "/>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"/>
+
+            <TextView
+                android:id="@+id/btn_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="16dp"
+                android:text="Notification"/>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"/>
+
+            <TextView
+                android:id="@+id/btn_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="16dp"
+                android:text="Version"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
     <Button
         android:id="@+id/btn_logout"

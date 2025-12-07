@@ -12,22 +12,15 @@ import android.widget.Toast
 
 class ProfileFragment : Fragment() {
 
-    // Key untuk menerima username dari Activity/host
     private var username: String? = null
 
     companion object {
-        // Key yang direkomendasikan untuk menerima data username
         const val ARG_USERNAME = "arg_username"
-        // Key yang digunakan oleh LoginActivity untuk mengirim username
-        // Nilai ini harus sama dengan yang didefinisikan di LoginActivity.kt
-        private const val EXTRA_USERNAME_KEY = "extra_username"
+        private const val EXTRA_USERNAME_KEY = "extra_username" // Pastikan ini sesuai di LoginActivity
 
         /**
-         * Gunakan metode factory ini untuk membuat instance baru dari
-         * fragment ini menggunakan parameter username yang diberikan.
-         *
-         * @param username Nama pengguna yang telah login.
-         * @return A new instance of fragment ProfileFragment.
+         * Metode factory yang disarankan untuk membuat instance Fragment
+         * dengan melewatkan data melalui Arguments Bundle.
          */
         @JvmStatic
         fun newInstance(username: String) =
@@ -40,7 +33,7 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Mengambil username dari arguments (Bundle) jika ada
+        // Mengambil username dari arguments (jika menggunakan newInstance)
         arguments?.let {
             username = it.getString(ARG_USERNAME)
         }
@@ -50,45 +43,79 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout untuk fragment ini
+        // Inflate the layout
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Menampilkan Username (Logika ini akan mengambil username yang diinputkan saat login)
+        // Panggil fungsi penyiapan
+        displayUsername(view)
+        setupLogoutButton(view)
+        setupMenuButtons(view) // Menghubungkan tombol menu dengan ID unik
+    }
+
+    /**
+     * Mengambil username dari Arguments atau Activity Intent dan menampilkannya.
+     */
+    private fun displayUsername(view: View) {
         val tvUserName = view.findViewById<TextView>(R.id.tv_user_name)
 
-        // Mulai dengan username dari arguments
         var userToDisplay = username
 
-        // Fallback: Jika username dari arguments kosong, coba ambil dari Intent Activity host
-        // Ini adalah langkah kunci untuk mendapatkan username yang dikirim dari LoginActivity
+        // Fallback: Coba ambil dari Activity Intent
         if (userToDisplay.isNullOrEmpty()) {
             userToDisplay = activity?.intent?.getStringExtra(EXTRA_USERNAME_KEY)
         }
 
         if (!userToDisplay.isNullOrEmpty()) {
-            // Tampilkan username yang berhasil diambil (yaitu yang diinputkan pengguna)
             tvUserName.text = userToDisplay
         } else {
-            // Fallback jika data tidak ditemukan sama sekali
             tvUserName.text = "USER"
         }
+    }
 
-
-        // . Mengatur Aksi Tombol LOG OUT
+    /**
+     * Menyiapkan aksi untuk tombol LOG OUT.
+     */
+    private fun setupLogoutButton(view: View) {
         val btnLogout = view.findViewById<Button>(R.id.btn_logout)
         btnLogout.setOnClickListener {
-            // TODO: Lakukan proses logout (bersihkan sesi, dll.)
+            // TODO: Bersihkan sesi login (Shared Preferences/Database) di sini
             Toast.makeText(context, "Logging out...", Toast.LENGTH_SHORT).show()
 
-            // Contoh navigasi kembali ke LoginActivity setelah logout
+            // Navigasi ke LoginActivity dan hapus back stack
             val intent = Intent(activity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
+    }
 
+    /**
+     * Menyiapkan aksi untuk tombol-tombol menu.
+     */
+    private fun setupMenuButtons(view: View) {
+        // Menghubungkan dengan ID unik yang sudah diperbaiki di XML
+        val btnHelp = view.findViewById<TextView>(R.id.btn_help)
+        val btnAbout = view.findViewById<TextView>(R.id.btn_about)
+        val btnNotification = view.findViewById<TextView>(R.id.btn_notification)
+        val btnVersion = view.findViewById<TextView>(R.id.btn_version)
+
+        btnHelp.setOnClickListener {
+            Toast.makeText(context, "Membuka halaman Bantuan", Toast.LENGTH_SHORT).show()
+        }
+
+        btnAbout.setOnClickListener {
+            Toast.makeText(context, "Membuka halaman Tentang Kami", Toast.LENGTH_SHORT).show()
+        }
+
+        btnNotification.setOnClickListener {
+            Toast.makeText(context, "Membuka Pengaturan Notifikasi", Toast.LENGTH_SHORT).show()
+        }
+
+        btnVersion.setOnClickListener {
+            Toast.makeText(context, "Versi Aplikasi: 1.0.0", Toast.LENGTH_SHORT).show()
+        }
     }
 }
