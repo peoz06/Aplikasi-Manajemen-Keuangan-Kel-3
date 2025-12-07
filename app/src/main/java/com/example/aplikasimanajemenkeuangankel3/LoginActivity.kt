@@ -21,21 +21,30 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        // Mendapatkan referensi input dan tombol
         val usernameInput = findViewById<EditText>(R.id.editTextTextUsername)
         val passwordInput = findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.buttonLogin)
 
+        // Listener untuk tombol Login
         buttonLogin.setOnClickListener {
 
             val username = usernameInput.text.toString()
             val password = passwordInput.text.toString()
 
+            // Cek apakah username atau password kosong
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Username dan Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             } else {
+                // Jika tidak kosong, lanjutkan ke MainActivity
                 val intent = Intent(this, MainActivity::class.java)
+
+                // Mengirim username ke MainActivity
+                // gunakan key yang sama dengan yang ada di ProfileFragment
+                intent.putExtra(ProfileFragment.ARG_USERNAME, username)
+
                 startActivity(intent)
-                finish()
+                finish() // Menutup LoginActivity agar pengguna tidak bisa kembali ke sini dengan tombol back
             }
         }
     }

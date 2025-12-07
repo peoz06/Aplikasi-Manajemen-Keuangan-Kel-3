@@ -1,8 +1,7 @@
 package com.example.aplikasimanajemenkeuangankel3
 
 import android.content.Intent
-import android.net.Uri // Diperlukan untuk Intent.ACTION_DIAL
-import android.os.Build
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,17 +10,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog // Pastikan Anda mengimpor AlertDialog
+import androidx.appcompat.app.AlertDialog
 
 class ProfileFragment : Fragment() {
 
+    // Variabel untuk menyimpan username yang diterima
     private var username: String? = null
 
-    // ... (Companion Object, onCreate, onCreateView) ...
     companion object {
+        // Key yang digunakan untuk Bundle Arguments
         const val ARG_USERNAME = "arg_username"
-        private const val EXTRA_USERNAME_KEY = "extra_username"
 
+        // Fungsi untuk membuat instance Fragment baru dan MENGIRIM data (username)
+        // Ini dipanggil dari MainActivity setelah LoginActivity selesai.
         @JvmStatic
         fun newInstance(username: String) =
             ProfileFragment().apply {
@@ -33,6 +34,7 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Menerima data username dari arguments yang dikirim saat newInstance dipanggil
         arguments?.let {
             username = it.getString(ARG_USERNAME)
         }
@@ -42,49 +44,59 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate layout untuk fragment ini
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Memastikan username tampil di layout
         displayUsername(view)
+
+        // Menyiapkan aksi untuk tombol-tombol
         setupLogoutButton(view)
-        setupMenuButtons(view) // Logika klik pop-up ada di sini
+        setupMenuButtons(view)
     }
 
+    // --- LOGIKA UTAMA: MENAMPILKAN USERNAME ---
+    /**
+     * Menampilkan username pada TextView (ID: tv_user_name) di Profile Fragment.
+     */
     private fun displayUsername(view: View) {
+        // Mengambil referensi TextView dari layout
         val tvUserName = view.findViewById<TextView>(R.id.tv_user_name)
-        var userToDisplay = username
+        val userToDisplay = username
 
-        if (userToDisplay.isNullOrEmpty()) {
-            userToDisplay = activity?.intent?.getStringExtra(EXTRA_USERNAME_KEY)
-        }
-
+        // Jika username ada (sudah diterima melalui arguments), tampilkan.
         if (!userToDisplay.isNullOrEmpty()) {
             tvUserName.text = userToDisplay
         } else {
-            tvUserName.text = "USER"
+            // Jika tidak ada (misalnya ada masalah), tampilkan default.
+            tvUserName.text = "Username"
         }
     }
 
+    // --- LOGIKA LOGOUT ---
+    /**
+     * Menyiapkan aksi untuk tombol Logout (ID: btn_logout).
+     */
     private fun setupLogoutButton(view: View) {
         val btnLogout = view.findViewById<Button>(R.id.btn_logout)
         btnLogout.setOnClickListener {
             Toast.makeText(context, "Logging out...", Toast.LENGTH_SHORT).show()
 
+            // Kembali ke LoginActivity
             val intent = Intent(activity, LoginActivity::class.java)
+            // Menghapus stack activity sebelumnya (penting untuk logout)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
 
-    // =========================================================================
-    // Fungsi baru untuk menampilkan pop-up
-    // =========================================================================
-
+    // --- LOGIKA POP-UP MENU ---
     /**
-     * Fungsi umum untuk menampilkan AlertDialog.
+     * Fungsi umum untuk menampilkan AlertDialog/Pop-up.
      * @param title Judul pop-up.
      * @param message Isi pesan pop-up.
      * @param isHelpAction True jika aksi ini harus menyertakan tombol Telepon.
@@ -95,15 +107,15 @@ class ProfileFragment : Fragment() {
             builder.setTitle(title)
             builder.setMessage(message)
 
-            // Tombol default untuk menutup
+            // Tombol default untuk menutup pop-up
             builder.setPositiveButton("TUTUP", null)
 
-            // Tambahkan tombol TELEPON hanya jika ini adalah aksi Bantuan (Help)
+            // Tambahkan tombol TELEPON hanya jika ini adalah aksi Bantuan
             if (isHelpAction) {
                 builder.setNegativeButton("TELEPON SEKARANG") { dialog, _ ->
-                    // Membuka Dialer
+                    // Membuka Dialer dengan nomor kontak
                     val intent = Intent(Intent.ACTION_DIAL)
-                    intent.data = Uri.parse("tel:+6282233370042") //nomor kontak
+                    intent.data = Uri.parse("tel:+6282233370042") // Nomor kontak Anda
                     startActivity(intent)
                 }
             }
@@ -113,7 +125,7 @@ class ProfileFragment : Fragment() {
     }
 
     /**
-     * Menyiapkan pop-up untuk semua tombol menu.
+     * Menyiapkan aksi klik untuk semua TextView menu (btn_help, btn_about, etc.).
      */
     private fun setupMenuButtons(view: View) {
         val btnHelp = view.findViewById<TextView>(R.id.btn_help)
@@ -138,7 +150,7 @@ class ProfileFragment : Fragment() {
         // 3. NOTIFICATION (Pop-up Pengaturan)
         btnNotification.setOnClickListener {
             val title = "Notifikation Setting"
-            val message = "Anda dapat mengaktifkan atau menonaktifkan pengingat transaksi dan laporan mingguan di Pengaturan perangkat anda."
+            val message = "Anda dapat mengaktifkan atau menonaktifkan pengingat aplikasi di Pengaturan perangkat anda."
             showInfoPopup(title, message)
         }
 
