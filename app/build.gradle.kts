@@ -39,7 +39,6 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.9.6")
-    implementation("io.coil-kt:coil:2.6.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -50,7 +49,6 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.cardview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
