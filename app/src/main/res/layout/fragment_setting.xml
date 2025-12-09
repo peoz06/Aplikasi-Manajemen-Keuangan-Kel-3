@@ -9,14 +9,17 @@
     android:padding="20dp"
     tools:context=".SettingFragment">
 
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Analisis Keuangan"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_width="412dp"
+        android:layout_height="97dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_gradient_blue"
+        android:gravity="center"
+        android:text="Analisis     "
         android:textColor="@android:color/white"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnInputData"

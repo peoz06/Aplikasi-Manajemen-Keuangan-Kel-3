@@ -59,7 +59,7 @@ class ProfileFragment : Fragment() {
         setupMenuButtons(view)
     }
 
-    // --- LOGIKA UTAMA: MENAMPILKAN USERNAME ---
+    // --- LOGIKA UTAMA: MENAMPILKAN USERNAME
     /**
      * Menampilkan username pada TextView (ID: tv_user_name) di Profile Fragment.
      */

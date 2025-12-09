@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 
-// import androidx.core.content.ContextCompat // Tidak diperlukan lagi
 
 /**
  * Fragment untuk menampilkan Analisis Keuangan.
